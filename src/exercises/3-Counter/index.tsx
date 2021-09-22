@@ -22,7 +22,8 @@ const Counter = () => {
       <pre>countB: {countB}</pre>
       <div>
         <button
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             setCountB(countB + 1);
           }}
         >
