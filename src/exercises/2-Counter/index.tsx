@@ -5,15 +5,14 @@
  * I want to increment by one the count variable each time I click the Increment button.
  */
 
-import { FC, useState } from "react";
+import React, { FC, useState, Dispatch, SetStateAction } from "react";
 
-const IncremenButton: FC<{ count: number }> = ({ count }) => {
-  const [savedCount, setSavedCount] = useState<number>(count);
+const IncremenButton: FC<{ count: number, setCount: Dispatch<SetStateAction<number>> }> = ({ count, setCount }) => {
 
   return (
     <button
       onClick={() => {
-        setSavedCount(savedCount + 1);
+        setCount(count + 1);
       }}
     >
       Increment
@@ -22,13 +21,13 @@ const IncremenButton: FC<{ count: number }> = ({ count }) => {
 };
 
 const Counter = () => {
-  const [count] = useState<number>(0);
+  const [count, setCount] = useState<number>(0);
 
   return (
     <div>
       <h1>My Counter 2</h1>
       <div>{count}</div>
-      <IncremenButton count={count} />
+      <IncremenButton count={count} setCount={setCount} />
     </div>
   );
 };
